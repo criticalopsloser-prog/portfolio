@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JOHN NEO — 3D Artist &amp; Illustrator</title>
+<title>John Neo Tapon — 3D Artist &amp; Illustrator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -193,7 +193,7 @@
 <div class="grain"></div>
 
 <nav>
-  <div class="logo">BHEION</div>
+  <div class="logo">MARA VOSS</div>
   <div class="nav-links">
     <a href="#work">Work</a>
     <a href="#about">About</a>
@@ -205,7 +205,7 @@
   <div class="hero-text">
     <div class="hud-line mono" id="hudLine">ROT <span id="rotX">X 00°</span> <span id="rotY">Y 00°</span> <span>· 3D ARTIST / ILLUSTRATOR</span></div>
     <h1>
-      <span class="line"><span>BHEION - JOHN NEO TAPON</span></span>
+      <span class="line"><span>Bheion - John Neo Tapon</span></span>
     </h1>
     <p class="hero-lede">I sculpt light, form and material into objects that feel like they could exist — then draw the ones that couldn't.</p>
     <a href="#work" class="cta">View the work <span class="arrow">→</span></a>
@@ -273,7 +273,7 @@
 </main>
 
 <footer class="wrap">
-  <span>© 2026 Mara Voss</span>
+  <span>© 2026 Bheion</span>
   <span class="mono">RENDERED IN WEBGL</span>
 </footer>
 
@@ -301,9 +301,9 @@
     grid.appendChild(el);
   });
 
-
   /* ---------- Hero load-in sequence (single orchestrated moment) ---------- */
   window.addEventListener('DOMContentLoaded', ()=>{
+    const visual = document.getElementById('heroVisual');
     const tl = (el, delay, props) => {
       el.style.transition = `all .7s cubic-bezier(.2,.7,.2,1) ${delay}ms`;
       requestAnimationFrame(()=> requestAnimationFrame(()=>{
