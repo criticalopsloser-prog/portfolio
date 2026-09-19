@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JOHN NEO — 3D Artist &amp; Illustrator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#121419;
+    --panel:#1a1d24;
+    --grid-line:#242830;
+    --text:#ecedef;
+    --muted:#8d919c;
+    --blue:#4e7fff;
+    --violet:#9b6bff;
+    --border:#2a2e37;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--blue); color:#0b0c0f;}
+
+  h1,h2,h3,.display{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  .mono{
+    font-family:'JetBrains Mono', monospace;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 40px;}
+
+  /* subtle grain */
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:50; opacity:0.035; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* NAV */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:40;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:26px 40px;
+    background:linear-gradient(to bottom, rgba(18,20,25,0.9), rgba(18,20,25,0));
+    backdrop-filter:blur(6px);
+  }
+  .logo{font-family:'Space Grotesk'; font-weight:600; font-size:18px; letter-spacing:0.01em;}
+  .nav-links{display:flex; gap:36px; font-size:14px; color:var(--muted);}
+  .nav-links a{transition:color .2s ease;}
+  .nav-links a:hover{color:var(--text);}
+
+  /* HERO */
+  header.hero{
+    min-height:100vh;
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    align-items:center;
+    gap:40px;
+    padding:120px 40px 60px;
+    position:relative;
+  }
+  .hero-text{position:relative; z-index:2;}
+  .hud-line{
+    font-size:12.5px; color:var(--violet); letter-spacing:0.04em;
+    display:flex; gap:14px; margin-bottom:22px; opacity:0; transform:translateY(6px);
+  }
+  .hud-line span{color:var(--muted);}
+  .hero-text h1{
+    font-size:clamp(42px, 6vw, 76px);
+    line-height:1.02;
+    margin-bottom:22px;
+    overflow:hidden;
+  }
+  .hero-text h1 .line{display:block; overflow:hidden;}
+  .hero-text h1 .line span{display:inline-block; transform:translateY(110%); }
+  .hero-lede{
+    max-width:420px; color:var(--muted); font-size:17px; margin-bottom:34px;
+    opacity:0; transform:translateY(10px);
+  }
+  .cta{
+    display:inline-flex; align-items:center; gap:10px;
+    border:1px solid var(--border); padding:13px 22px; border-radius:2px;
+    font-size:14px; color:var(--text);
+    opacity:0; transform:translateY(10px);
+    transition:border-color .25s ease, background .25s ease;
+  }
+  .cta:hover{border-color:var(--blue); background:rgba(78,127,255,0.08);}
+  .cta .arrow{transition:transform .25s ease;}
+  .cta:hover .arrow{transform:translateX(4px);}
+
+  .hero-visual{
+    position:relative; height:560px; border:1px solid var(--border);
+    background:
+      linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/38px 38px,
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/38px 38px,
+      var(--panel);
+    opacity:0;
+  }
+  .hero-visual canvas{width:100% !important; height:100% !important; display:block;}
+  .bracket{position:absolute; width:26px; height:26px; z-index:3;}
+  .bracket svg{width:100%; height:100%;}
+  .bracket path{stroke:var(--blue); stroke-width:1.5; fill:none; stroke-dasharray:60; stroke-dashoffset:60;}
+  .bracket.tl{top:14px; left:14px;}
+  .bracket.tr{top:14px; right:14px; transform:scaleX(-1);}
+  .bracket.bl{bottom:14px; left:14px; transform:scaleY(-1);}
+  .bracket.br{bottom:14px; right:14px; transform:scale(-1,-1);}
+
+  .hud-readout{
+    position:absolute; bottom:16px; left:16px; z-index:3;
+    font-size:11px; color:var(--muted); display:flex; gap:14px;
+  }
+  .hud-readout b{color:var(--blue); font-weight:500;}
+  .hud-tag{
+    position:absolute; top:16px; right:16px; z-index:3;
+    font-size:11px; color:var(--violet); border:1px solid var(--border);
+    padding:4px 9px; background:rgba(18,20,25,0.6);
+  }
+
+  section{padding:120px 0;}
+  .section-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:56px; border-bottom:1px solid var(--border); padding-bottom:22px;}
+  .section-head h2{font-size:32px;}
+  .section-head .count{font-size:13px; color:var(--muted);}
+
+  /* WORK GRID */
+  .work-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; background:var(--border);}
+  .work-item{
+    position:relative; aspect-ratio:4/5; overflow:hidden; background:var(--bg); cursor:pointer;
+  }
+  .thumb{position:absolute; inset:0; transition:transform .6s cubic-bezier(.2,.7,.2,1);}
+  .work-item:hover .thumb{transform:scale(1.05);}
+  .wire-overlay{
+    position:absolute; inset:0; opacity:0; transition:opacity .35s ease;
+    background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.13) 0 1px, transparent 1px 18px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.13) 0 1px, transparent 1px 18px);
+    mix-blend-mode:overlay;
+  }
+  .work-item:hover .wire-overlay{opacity:1;}
+  .work-meta{
+    position:absolute; left:0; right:0; bottom:0; padding:18px;
+    background:linear-gradient(to top, rgba(10,11,14,0.85), transparent);
+    transform:translateY(8px); opacity:0; transition:all .3s ease;
+  }
+  .work-item:hover .work-meta{transform:translateY(0); opacity:1;}
+  .work-meta .title{font-family:'Space Grotesk'; font-size:16px; margin-bottom:4px;}
+  .work-meta .sub{font-size:11.5px; color:var(--muted); letter-spacing:0.02em;}
+
+  /* ABOUT */
+  .about-grid{display:grid; grid-template-columns:1.2fr 1fr; gap:60px;}
+  .about-grid p{color:var(--muted); font-size:17px; max-width:520px; margin-bottom:18px;}
+  .tools{display:flex; flex-wrap:wrap; gap:10px; align-content:flex-start;}
+  .tool-chip{
+    font-family:'JetBrains Mono'; font-size:12px; color:var(--text);
+    border:1px solid var(--border); padding:8px 12px;
+  }
+
+  /* CONTACT */
+  .contact{text-align:left; border-top:1px solid var(--border); padding-top:60px;}
+  .contact h2{font-size:clamp(34px, 5vw, 58px); margin-bottom:26px; max-width:640px;}
+  .contact-row{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px;}
+  .email-link{font-family:'Space Grotesk'; font-size:20px; border-bottom:1px solid var(--border); padding-bottom:4px;}
+  .email-link:hover{border-color:var(--blue); color:var(--blue);}
+  .socials{display:flex; gap:26px; font-size:14px; color:var(--muted);}
+  .socials a:hover{color:var(--text);}
+
+  footer{padding:30px 0 50px; display:flex; justify-content:space-between; font-size:12px; color:var(--muted); border-top:1px solid var(--border);}
+
+  @media (max-width:860px){
+    header.hero{grid-template-columns:1fr; padding-top:110px;}
+    .hero-visual{height:380px; order:-1;}
+    .work-grid{grid-template-columns:repeat(2,1fr);}
+    .about-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<nav>
+  <div class="logo">BHEION</div>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-text">
+    <div class="hud-line mono" id="hudLine">ROT <span id="rotX">X 00°</span> <span id="rotY">Y 00°</span> <span>· 3D ARTIST / ILLUSTRATOR</span></div>
+    <h1>
+      <span class="line"><span>BHEION - JOHN NEO TAPON</span></span>
+    </h1>
+    <p class="hero-lede">I sculpt light, form and material into objects that feel like they could exist — then draw the ones that couldn't.</p>
+    <a href="#work" class="cta">View the work <span class="arrow">→</span></a>
+  </div>
+
+  <div class="hero-visual" id="heroVisual">
+    <div class="bracket tl"><svg viewBox="0 0 26 26"><path d="M1,25 L1,1 L25,1"/></svg></div>
+    <div class="bracket tr"><svg viewBox="0 0 26 26"><path d="M1,25 L1,1 L25,1"/></svg></div>
+    <div class="bracket bl"><svg viewBox="0 0 26 26"><path d="M1,25 L1,1 L25,1"/></svg></div>
+    <div class="bracket br"><svg viewBox="0 0 26 26"><path d="M1,25 L1,1 L25,1"/></svg></div>
+    <div class="hud-tag mono">BEAUTY</div>
+    <div class="hud-readout mono">
+      <span>SCALE <b>1.00</b></span>
+      <span>FOV <b>45°</b></span>
+    </div>
+    <canvas id="heroCanvas"></canvas>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="work">
+    <div class="section-head">
+      <h2>Selected work</h2>
+      <span class="count mono">06 PIECES</span>
+    </div>
+    <div class="work-grid" id="workGrid"></div>
+  </section>
+
+  <section id="about">
+    <div class="section-head">
+      <h2>About</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>I'm a 3D artist and illustrator working across product visualization, abstract sculptural studies, and character-driven illustration. My process usually starts in the viewport — blocking form and light before anything else — and moves toward texture, material, and mood last.</p>
+        <p>Previously worked with studios and independent clients on campaign visuals, motion stills, and editorial illustration. Based between screens, mostly awake at night.</p>
+      </div>
+      <div>
+        <div class="tools">
+          <span class="tool-chip">Blender</span>
+          <span class="tool-chip">Cinema 4D</span>
+          <span class="tool-chip">Octane</span>
+          <span class="tool-chip">Substance Painter</span>
+          <span class="tool-chip">ZBrush</span>
+          <span class="tool-chip">Procreate</span>
+          <span class="tool-chip">Photoshop</span>
+          <span class="tool-chip">After Effects</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Have a piece in mind? Let's build it.</h2>
+    <div class="contact-row">
+      <a href="mailto:hello@maravoss.com" class="email-link">hello@maravoss.com</a>
+      <div class="socials">
+        <a href="#">Instagram</a>
+        <a href="#">Behance</a>
+        <a href="#">ArtStation</a>
+        <a href="#">Twitter</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>© 2026 Mara Voss</span>
+  <span class="mono">RENDERED IN WEBGL</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  /* ---------- Work grid placeholder pieces ---------- */
+  const works = [
+    {title:"Fracture Study 01", sub:"3D render · 2026", grad:"linear-gradient(135deg,#3a4a7a,#4e7fff 55%,#1a2038)"},
+    {title:"Paper Lantern", sub:"Illustration · 2026", grad:"linear-gradient(135deg,#3a2a55,#9b6bff 55%,#1c1430)"},
+    {title:"Ceramic No. 4", sub:"3D render · 2025", grad:"linear-gradient(135deg,#2a4a48,#4fd1c5 55%,#132524)"},
+    {title:"Night Vendor", sub:"Illustration · 2025", grad:"linear-gradient(135deg,#5a2e28,#ff8a65 55%,#2a1512)"},
+    {title:"Torus Series / 3", sub:"3D render · 2025", grad:"linear-gradient(135deg,#2a3a6a,#5e8cff 55%,#141a30)"},
+    {title:"Static Bloom", sub:"Illustration · 2024", grad:"linear-gradient(135deg,#4a2a5a,#c96bff 55%,#20142e)"},
+  ];
+  const grid = document.getElementById('workGrid');
+  works.forEach(w=>{
+    const el = document.createElement('div');
+    el.className = 'work-item';
+    el.innerHTML = `
+      <div class="thumb" style="background:${w.grad}"></div>
+      <div class="wire-overlay"></div>
+      <div class="work-meta">
+        <div class="title">${w.title}</div>
+        <div class="sub mono">${w.sub}</div>
+      </div>`;
+    grid.appendChild(el);
+  });
+
+  /* ---------- Three.js hero scene ---------- */
+  const canvas = document.getElementById('heroCanvas');
+  const visual = document.getElementById('heroVisual');
+  let w = visual.clientWidth, h = visual.clientHeight;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, w/h, 0.1, 100);
+  camera.position.set(0, 0, 6);
+
+  const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+  renderer.setSize(w, h);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  const geo = new THREE.TorusKnotGeometry(1.05, 0.32, 160, 24);
+  const mat = new THREE.MeshStandardMaterial({color:0x9b6bff, metalness:0.65, roughness:0.28});
+  const knot = new THREE.Mesh(geo, mat);
+  scene.add(knot);
+
+  const wireGeo = new THREE.TorusKnotGeometry(1.05, 0.32, 60, 10);
+  const wireMat = new THREE.MeshBasicMaterial({color:0x4e7fff, wireframe:true, transparent:true, opacity:0.12});
+  const wireKnot = new THREE.Mesh(wireGeo, wireMat);
+  wireKnot.scale.set(1.03,1.03,1.03);
+  scene.add(wireKnot);
+
+  scene.add(new THREE.AmbientLight(0x404050, 1.2));
+  const key = new THREE.DirectionalLight(0x4e7fff, 2.2); key.position.set(3,3,4); scene.add(key);
+  const rim = new THREE.DirectionalLight(0x9b6bff, 1.8); rim.position.set(-4,-2,-3); scene.add(rim);
+
+  let mouseX = 0, mouseY = 0;
+  visual.addEventListener('mousemove', (e)=>{
+    const r = visual.getBoundingClientRect();
+    mouseX = ((e.clientX - r.left) / r.width - 0.5);
+    mouseY = ((e.clientY - r.top) / r.height - 0.5);
+  });
+
+  const rotXEl = document.getElementById('rotX');
+  const rotYEl = document.getElementById('rotY');
+
+  function animate(){
+    requestAnimationFrame(animate);
+    knot.rotation.y += 0.0035;
+    knot.rotation.x += 0.0012;
+    wireKnot.rotation.copy(knot.rotation);
+    camera.position.x += (mouseX*1.2 - camera.position.x) * 0.04;
+    camera.position.y += (-mouseY*1.2 - camera.position.y) * 0.04;
+    camera.lookAt(0,0,0);
+    renderer.render(scene, camera);
+
+    const dx = ((knot.rotation.x * 180/Math.PI) % 360 + 360) % 360;
+    const dy = ((knot.rotation.y * 180/Math.PI) % 360 + 360) % 360;
+    rotXEl.textContent = `X ${dx.toFixed(0).padStart(2,'0')}°`;
+    rotYEl.textContent = `Y ${dy.toFixed(0).padStart(2,'0')}°`;
+  }
+  animate();
+
+  window.addEventListener('resize', ()=>{
+    w = visual.clientWidth; h = visual.clientHeight;
+    camera.aspect = w/h; camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  });
+
+  /* ---------- Hero load-in sequence (single orchestrated moment) ---------- */
+  window.addEventListener('DOMContentLoaded', ()=>{
+    const tl = (el, delay, props) => {
+      el.style.transition = `all .7s cubic-bezier(.2,.7,.2,1) ${delay}ms`;
+      requestAnimationFrame(()=> requestAnimationFrame(()=>{
+        Object.assign(el.style, props);
+      }));
+    };
+    document.getElementById('hudLine').style.transition = 'all .6s ease 100ms';
+    tl(document.getElementById('hudLine'), 100, {opacity:1, transform:'translateY(0)'});
+
+    document.querySelectorAll('.hero-text h1 .line span').forEach((s,i)=>{
+      s.style.transition = `transform .8s cubic-bezier(.16,1,.3,1) ${300+i*80}ms`;
+      requestAnimationFrame(()=> requestAnimationFrame(()=>{ s.style.transform='translateY(0)'; }));
+    });
+
+    tl(document.querySelector('.hero-lede'), 500, {opacity:1, transform:'translateY(0)'});
+    tl(document.querySelector('.cta'), 650, {opacity:1, transform:'translateY(0)'});
+    tl(visual, 200, {opacity:1});
+
+    document.querySelectorAll('.bracket path').forEach((p,i)=>{
+      p.style.transition = `stroke-dashoffset .8s ease ${400+i*90}ms`;
+      requestAnimationFrame(()=> requestAnimationFrame(()=>{ p.style.strokeDashoffset='0'; }));
+    });
+  });
+</script>
+</body>
+</html>
