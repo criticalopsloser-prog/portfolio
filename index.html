@@ -87,10 +87,10 @@
   }
   /* >>> PUT THE URL OF YOUR PICTURE IN THE background BELOW <<< */
   .hero-portrait {
-    position: absolute; inset: 0; z-index: 0;
-    background: url('') center/cover no-repeat;
-    opacity: 0.45;
-    filter: grayscale(1) contrast(1.1);
+  position: absolute; inset: 0; z-index: 0;
+  background: url('https://lh3.googleusercontent.com/d/1jkhQCfzGPLNAkQKrhbRLaxq0A3LNGneQ=w2000') center/cover no-repeat;
+  opacity: 0.45;
+  filter: grayscale(1) contrast(1.1);
   }
   .hero::after {
     content: ''; position: absolute; inset: 0; z-index: 1;
@@ -113,7 +113,10 @@
   /* ABOUT */
   .about-section { padding: 140px 0; display: flex; justify-content: center; }
   .about-container { display: flex; align-items: center; gap: 60px; max-width: 900px; width: 100%; }
-  .about-img { width: 220px; height: 280px; flex-shrink: 0; border: 1px solid var(--border); background: var(--panel); }
+  .about-img { width: 220px; height: 280px; flex-shrink: 0; border: 1px solid var(--border); background: var(--panel); overflow: hidden; }
+.about-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
+  .contact-img { overflow: hidden; }
+  .contact-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .about-text { flex: 1; text-align: left; }
   .about-text h2 { font-size: 34px; letter-spacing: 2px; margin-bottom: 25px; }
   .about-text h2::after { content: ''; display: block; width: 60px; height: 2px; background: #fff; margin-top: 14px; }
@@ -231,7 +234,7 @@
   .contact-img { width: 100%; aspect-ratio: 1; border-radius: 40px 0 40px 40px; border: 1px solid var(--border); background: var(--panel); display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk'; font-size: 24px; }
   .contact-sub { font-size: 30px; font-style: italic; font-weight: 500; letter-spacing: 1px; margin-bottom: 25px; color: var(--text); }
   .contact-links { display: flex; flex-direction: column; gap: 15px; }
-  .contact-links a { font-size: 18px; color: var(--muted); transition: color .2s; }
+  .contact-links a, .contact-links p { font-size: 18px; color: var(--muted); transition: color .2s; }
   .contact-links a:hover { color: var(--text); }
   
   /* MICRO-ANIMATIONS */
@@ -255,6 +258,12 @@
   }
   .anim-box:hover {
     transform: scale(1.02);
+    border-color: #9b6bff;
+    box-shadow: 0 10px 40px rgba(155,107,255,0.18);
+  }
+  .about-img, .contact-img { cursor: pointer; transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
+  .about-img:hover, .contact-img:hover {
+    transform: scale(1.03);
     border-color: #9b6bff;
     box-shadow: 0 10px 40px rgba(155,107,255,0.18);
   }
@@ -293,7 +302,8 @@
   .lightbox-content .box-title, .lightbox-content .g-cap { font-size: 16px; }
   /* cloned box must not react to hover inside the lightbox */
   .lightbox-content .box, .lightbox-content .g-box,
-  .lightbox-content .anim-box, .lightbox-content .model-proof {
+  .lightbox-content .anim-box, .lightbox-content .model-proof,
+  .lightbox-content .about-img, .lightbox-content .contact-img {
     transform: none !important;
     border-color: var(--border);
     box-shadow: none;
@@ -311,6 +321,7 @@
   .box-title { position: absolute; bottom: 15px; left: 15px; font-family: 'Space Grotesk'; font-size: 14px; font-weight: 600; text-transform: uppercase; }
 
 </style>
+<base target="_blank">
 <base target="_blank">
 </head>
 <body>
@@ -346,7 +357,7 @@
 <section class="about-section" id="about">
   <div class="about-container">
     <div class="about-img">
-      <!-- Placeholder for image -->
+      <img src="https://scontent.fdvo2-1.fna.fbcdn.net/v/t1.15752-9/814870367_1762480314806824_4418015190291590008_n.jpg?_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeGaQxM0CTVOW0fwqcLXj2yc2zZ8N8EW1VbbNnw3wRbVVv7f7VhbRH2n2PspCl9SKiX1o1dhwQFye49Ht9fWb3sR&_nc_ohc=Mw-T4qAiKzMQ7kNvwENL2E7&_nc_oc=Adr0GmT0WitjC6xLZuLX_zMlK25mp-rg7gFZul9SdEu-RdFzwRez6WW7MqD08eSNnvS1XXu5ouQC3-Hipt0xmxgf&_nc_zt=23&_nc_ht=scontent.fdvo2-1.fna&_nc_ss=7b2a8&oh=03_Q7cD6QGdP1Xbmp9ExLss1WBKCh46yUukMDoTMkstELXARy1bTg&oe=6ADA44A8" alt="John Neo Tapon">
     </div>
     <div class="about-text">
       <h2>ABOUT ME</h2>
@@ -484,16 +495,16 @@
   <section class="contact-section" id="contact">
     <div class="contact-grid">
       <div class="contact-img">
+        <!-- PUT YOUR CONTACT PICTURE URL BELOW (same img format as the about pic) -->
         MY PICTURE
       </div>
       <div class="contact-links">
         <div class="contact-sub">Ideas made real.</div>
-        <a href="mailto:johnneotapon@gmail.com">Email: johnneotapon@gmail.com</a>
-        <a href="#">Number: +63 995 220 2844</a>
-        <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn - John Neo Tapon</a>
+        <p>johnneotapon@gmail.com</p>
+        <p>+63 995 220 2844</p>
+        <a href="https://www.linkedin.com/in/john-neo-tapon-72a718388/" target="_blank" rel="noopener noreferrer">LinkedIn - John Neo Tapon</a>
         <a href="https://www.behance.net/Bheion" target="_blank" rel="noopener noreferrer">Behance - Bheion</a>
         <a href="https://www.instagram.com/bh.eiyung/" target="_blank" rel="noopener noreferrer">Instagram - Bh.eiyung</a>
-        <a href="#" target="_blank" rel="noopener noreferrer">Facebook - Eon Tapon</a>
         <a href="https://www.tiktok.com/@a.cryma" target="_blank" rel="noopener noreferrer">TikTok - @A.Cryma</a>
       </div>
     </div>
@@ -564,7 +575,7 @@
   // Lightbox: click any work box to expand it
   const lightbox = document.getElementById('lightbox');
   const lightboxContent = document.getElementById('lightboxContent');
-  document.querySelectorAll('.box, .g-box, .anim-box, .model-proof').forEach(el => {
+  document.querySelectorAll('.box, .g-box, .anim-box, .model-proof, .about-img, .contact-img').forEach(el => {
     el.addEventListener('click', () => {
       const clone = el.cloneNode(true);
       clone.style.width = '100%';
@@ -580,14 +591,14 @@
   function closeLightbox(e) {
     if (e.target === lightbox || e.target.classList.contains('lightbox-close')) {
       lightbox.classList.remove('open');
-      lightboxContent.querySelectorAll('.box, .g-box, .anim-box, .model-proof').forEach(n => n.remove());
+      lightboxContent.querySelectorAll('.box, .g-box, .anim-box, .model-proof, .about-img, .contact-img').forEach(n => n.remove());
       document.body.style.overflow = '';
     }
   }
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && lightbox.classList.contains('open')) {
       lightbox.classList.remove('open');
-      lightboxContent.querySelectorAll('.box, .g-box, .anim-box, .model-proof').forEach(n => n.remove());
+      lightboxContent.querySelectorAll('.box, .g-box, .anim-box, .model-proof, .about-img, .contact-img').forEach(n => n.remove());
       document.body.style.overflow = '';
     }
   });
