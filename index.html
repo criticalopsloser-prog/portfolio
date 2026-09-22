@@ -88,7 +88,7 @@
   /* >>> PUT THE URL OF YOUR PICTURE IN THE background BELOW <<< */
   .hero-portrait {
     position: absolute; inset: 0; z-index: 0;
-    background: url('https://media.discordapp.net/attachments/1335234294045610099/1546165935554166834/d68f4261-4485-404f-896e-2491ac107617.png?ex=6ab3e2bd&is=6ab2913d&hm=bcd22899dc58f3a7914f80ece90c055df4634c6be430f3626b42f44796434195&=&format=webp&quality=lossless&width=708&height=1024') center/cover no-repeat;
+    background: url('') center/cover no-repeat;
     opacity: 0.45;
     filter: grayscale(1) contrast(1.1);
   }
@@ -382,7 +382,7 @@
   </div>
 </section>
 
-<section class="works-intro" id="works">
+<section class="works-intro" id="my-portfolio">
   <h2>WORKS</h2>
   <div class="spline-box">
     <iframe src='https://my.spline.design/untitled-FY2bufq1op5Dgv2WfAfPDlgT/' frameborder='0' width='100%' height='100%'></iframe>
@@ -512,7 +512,7 @@
   }
 
   // Navigation morphing logic
-  const worksSection = document.getElementById('works');
+  const worksSection = document.getElementById('my-portfolio');
   const navLeft = document.getElementById('navLeftLinks');
   const navRight = document.getElementById('navRightLinks');
 
@@ -534,7 +534,7 @@
       navLeft.innerHTML = ``;
       navRight.innerHTML = `
         <a href="#about" onclick="scrollToSection(event,'about')">ABOUT</a>
-        <a href="#works" onclick="scrollToSection(event,'works')">WORKS</a>
+        <a href="#my-portfolio" onclick="scrollToSection(event,'my-portfolio')">WORKS</a>
         <a href="#contact" onclick="scrollToSection(event,'contact')">CONTACT</a>
       `;
     }
