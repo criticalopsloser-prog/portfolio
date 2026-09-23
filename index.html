@@ -36,7 +36,7 @@
   a { color: inherit; text-decoration: none; }
   .wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
   
-  /* NAV */
+
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
@@ -50,7 +50,7 @@
   .nav-links { display: flex; gap: 34px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text); text-transform: uppercase; letter-spacing: 2px; }
   .nav-links a:hover { color: var(--text); }
   
-  /* HERO — homepage per reference image */
+  
   .hero {
     height: 100vh;
     display: flex; align-items: center; justify-content: center;
@@ -85,7 +85,7 @@
   .hero-text {
     position: relative; z-index: 2; text-align: center;
   }
-  /* >>> PUT THE URL OF YOUR PICTURE IN THE background BELOW <<< */
+
   .hero-portrait {
   position: absolute; inset: 0; z-index: 0;
   background: url('https://lh3.googleusercontent.com/d/1jkhQCfzGPLNAkQKrhbRLaxq0A3LNGneQ=w2000') center/cover no-repeat;
@@ -110,7 +110,6 @@
     letter-spacing: 4px; color: #9b6bff;
   }
 
-  /* ABOUT */
   .about-section { padding: 140px 0; display: flex; justify-content: center; }
   .about-container { display: flex; align-items: center; gap: 60px; max-width: 900px; width: 100%; }
   .about-img { width: 220px; height: 280px; flex-shrink: 0; border: 1px solid var(--border); background: var(--panel); overflow: hidden; }
@@ -130,7 +129,6 @@
   }
   .contact-me:hover { color: #fff; border-color: #fff; }
   
-  /* SOFTWARES & SKILLS */
   .skills-section { padding: 120px 0 90px; }
   .cluster {
     display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
@@ -147,7 +145,7 @@
     display: flex; align-items: center; gap: 10px; white-space: nowrap;
     box-shadow: 0 4px 20px rgba(0,0,0,0.5);
   }
-  /* organic scatter — pills above and below sit at slightly different heights */
+
   .cluster .pill:nth-child(1) { transform: translateY(-10px); }
   .cluster .pill:nth-child(2) { transform: translateY(6px); }
   .cluster .pill:nth-child(3) { transform: translateY(-4px); }
@@ -159,7 +157,7 @@
   .blue { background: var(--violet); box-shadow: 0 0 8px var(--violet); }
   .purple { background: var(--violet); box-shadow: 0 0 8px var(--violet); }
 
-  /* WORKS INTRO */
+
   .works-intro { text-align: center; padding: 100px 0; }
   .works-intro h2 { font-size: 24px; margin-bottom: 30px; letter-spacing: 4px; }
   .spline-box { 
@@ -174,10 +172,10 @@
   }
   .work-links a:hover { color: var(--text); }
 
-  /* SECTION WRAPPERS */
+
   .work-section { padding: 100px 0; border-top: 1px solid var(--border); }
   
-  /* ILLUSTRATIONS 1 */
+
   .ill-header-1 { display: flex; flex-direction: column; align-items: flex-end; width: fit-content; margin: 0 auto 40px; }
   .ill-header-1 h2 { font-size: 64px; letter-spacing: 4px; line-height: 1; }
   .ill-header-1 .sub { font-size: 20px; font-family: 'Inter'; letter-spacing: 2px; }
@@ -185,19 +183,19 @@
   .box { aspect-ratio: 3/4; border: 1px solid var(--border); background: #121419; position: relative; cursor: pointer; overflow: hidden; }
   .box img { width: 100%; height: 100%; object-fit: cover; display: block; }
   
-  /* ILLUSTRATIONS 2 */
+
   .ill-header-2 { display: flex; flex-direction: column; align-items: flex-start; width: fit-content; margin: 40px auto 0; }
   .ill-header-2 h2 { font-size: 64px; letter-spacing: 4px; line-height: 1; }
   .ill-header-2 .sub { font-size: 20px; font-family: 'Inter'; letter-spacing: 2px; margin-bottom: -10px; }
 
-  /* GRAPHIC DESIGN */
+
   .graphic-layout { display: grid; grid-template-columns: auto 1fr; gap: 70px; align-items: start; }
   .v-text { font-family: 'Space Grotesk'; font-size: clamp(44px, 6vw, 80px); font-weight: 700; text-align: center; line-height: 1.05; letter-spacing: 8px; }
   .g-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(170px, auto); gap: 26px; }
   .g-box { height: 200px; position: relative; border: 1px solid var(--border); background: #121419; overflow: hidden; }
   .g-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .g-cap { position: absolute; bottom: 12px; left: 12px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; color: var(--muted); }
-  /* scattered positions inside the 3-column grid (7 items) */
+
   .g-item-1 { grid-area: 1 / 1; }
   .g-item-2 { grid-area: 1 / 2; margin-top: 45px; }
   .g-item-3 { grid-area: 1 / 3; margin-top: -15px; }
@@ -214,14 +212,14 @@
   .ill-expl h3 { font-size: 15px; font-family: 'JetBrains Mono', monospace; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; color: var(--text); }
   .ill-expl p { color: var(--muted); font-size: 15px; line-height: 1.9; }
 
-  /* ANIMATION */
+
   .anim-title-center { text-align: center; font-size: 48px; letter-spacing: 4px; margin-bottom: 50px; }
   .anim-stack { display: flex; flex-direction: column; gap: 8px; max-width: 720px; margin: 0 auto; width: 100%; }
   .anim-box { aspect-ratio: 16/9; border: 1px solid var(--border); background: #121419; overflow: hidden; }
   .anim-box iframe { width: 100%; height: 100%; border: 0; display: block; }
   .anim-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-  /* 3D MODELING */
+
   .model-title-center { text-align: center; font-size: 48px; letter-spacing: 4px; margin: 45px 0 45px; }
   .model-proof-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; width: 100%; max-width: 900px; margin: 0 auto; }
   .model-proof { aspect-ratio: 1; border: 1px solid var(--border); background: #121419; overflow: hidden; }
@@ -233,7 +231,7 @@
   .model-side-grid { display: flex; justify-content: center; gap: 40px; align-items: flex-end; width: 100%; max-width: 800px; }
   .model-side { width: 200px; height: 200px; border: 1px solid var(--border); background: #121419; }
 
-  /* CONTACTS */
+
   .contact-section { padding: 120px 0; border-top: 1px solid var(--border); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 900px; margin: 0 auto; align-items: center; }
   .contact-img { width: 100%; aspect-ratio: 1; border-radius: 40px 0 40px 40px; border: 1px solid var(--border); background: var(--panel); display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk'; font-size: 24px; }
@@ -242,7 +240,7 @@
   .contact-links a, .contact-links p { font-size: 18px; color: var(--muted); transition: color .2s; }
   .contact-links a:hover { color: var(--text); }
   
-  /* MICRO-ANIMATIONS */
+
   .pill { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
   .pill:hover {
     transform: translateY(-3px) scale(1.05);
@@ -284,11 +282,12 @@
   .cluster h2:hover { letter-spacing: 6px; }
   .lightbox-content { animation: lbPop .25s ease; }
   @keyframes lbPop { from { transform: scale(0.94); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-  /* scroll reveal */
+
+
   .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* LIGHTBOX */
+
   .box, .g-box, .anim-box, .model-proof { cursor: pointer; transition: border-color .2s; }
   .box:hover, .g-box:hover, .anim-box:hover, .model-proof:hover { border-color: #9b6bff; }
   .lightbox-overlay {
@@ -306,7 +305,8 @@
   }
   .lightbox-content .box-title, .lightbox-content .g-cap { font-size: 16px; }
   .lightbox-content img { object-fit: contain !important; background: #0b0c0f; }
-  /* cloned box must not react to hover inside the lightbox */
+
+
   .lightbox-content .box, .lightbox-content .g-box,
   .lightbox-content .anim-box, .lightbox-content .model-proof,
   .lightbox-content .about-img, .lightbox-content .contact-img {
@@ -323,7 +323,7 @@
   }
   .lightbox-close:hover { color: #fff; }
 
-  /* OVERLAYS */
+
   .box-title { position: absolute; bottom: 15px; left: 15px; font-family: 'Space Grotesk'; font-size: 14px; font-weight: 600; text-transform: uppercase; }
 
 </style>
@@ -337,15 +337,15 @@
 <nav id="navbar">
   <div class="nav-left">
     <a href="#" class="logo" onclick="event.preventDefault(); window.scrollTo({top:0, behavior:'smooth'}); return false;">
-      <!-- Verbatim link from Drive provided -->
+
       <img src="https://lh3.googleusercontent.com/d/1BiTrjTJ16X1Ii3dyVFY3bAsbYPUGowC0=w400" alt="Logo">
     </a>
     <div class="nav-links" id="navLeftLinks">
-      <!-- Default state empty or basic, handled by JS -->
+
     </div>
   </div>
   <div class="nav-links" id="navRightLinks">
-    <!-- Default state empty or basic, handled by JS -->
+
   </div>
 </nav>
 
@@ -379,7 +379,7 @@
 </section>
 
 <section class="skills-section">
-  <!-- Softwares Cluster -->
+
   <div class="cluster softwares">
     <div class="pill"><span class="dot blue"></span>Adobe Photoshop</div>
     <div class="pill"><span class="dot blue"></span>Adobe Illustrator</div>
@@ -391,7 +391,7 @@
     <div class="pill"><span class="dot blue"></span>Audacity</div>
   </div>
 
-  <!-- Skills Cluster -->
+
   <div class="cluster skills">
     <div class="pill"><span class="dot purple"></span>Graphic Design</div>
     <div class="pill"><span class="dot purple"></span>Storyboarding</div>
@@ -418,7 +418,7 @@
 </section>
 
 <main class="wrap">
-  <!-- ILLUSTRATIONS 1 -->
+
   <section class="work-section" id="illustrations">
     <div class="ill-header-1">
       <h2>ILLUSTRATIONS</h2>
@@ -431,13 +431,13 @@
     </div>
   </section>
 
-  <!-- ART PASSION -->
+
   <div class="ill-expl reveal">
     <h3>Art Passion</h3>
     <p>I've been drawing since I was young, fueled by an endless love for anime — and that hunger to learn has never left me. Every piece is a step forward, because I'm always chasing a better version of my own art.</p>
   </div>
 
-  <!-- ILLUSTRATIONS 2 -->
+
   <section class="work-section" style="border-top: none; padding-top: 30px;">
     <div class="grid-3">
       <div class="box"><img src="https://lh3.googleusercontent.com/d/1N1E5sDZQzrK_mHL6aO3sX39bn3doSuDu=w1200" alt="Passion piece 1"><div class="box-title">AH, THE SUN!</div></div>
@@ -450,7 +450,7 @@
     </div>
   </section>
 
-  <!-- GRAPHIC DESIGN -->
+
   <section class="work-section" id="graphic">
     <div class="graphic-layout">
       <div class="v-text">
@@ -470,10 +470,10 @@
       <h3>The drive</h3>
       <p>Graphic design, to me, is a combination of fun and challenges — each and every one of them provides new dimensions to my creativity. It needs patience, continuous research about references, and excitement of transforming ideas into my own creations.</p>
     </div>
-    </div><!-- /graphic-right -->
+    </div>
   </section>
 
-  <!-- ANIMATION 2D -->
+
   <section class="work-section" id="animation">
     <h2 class="anim-title-center">2D ANIMATION</h2>
     <div class="anim-stack">
@@ -483,13 +483,13 @@
     </div>
   </section>
 
-  <!-- INSPIRATION -->
+
   <div class="ill-expl reveal">
     <h3>Inspiration</h3>
     <p>2D animation has always motivated me, as it brings all the ideas that I think about into reality, while 3D modeling makes all these ideas seem so realistic. It is an exciting experience when combining both of them, but although I have not done it yet, I am constantly challenging myself to improve my 3D skills and learn more 2D animation.</p>
   </div>
 
-  <!-- 3D MODELING -->
+
   <section class="work-section" id="modeling" style="border-top: none; padding-top: 40px;">
     <div class="anim-stack">
       <div class="anim-box"><img src="https://lh3.googleusercontent.com/d/1jbKUdfprC7zC6u2VuQwSaUy46jBdqoar=w1600" alt="3D modeling render 1"></div>
@@ -508,7 +508,7 @@
     </div>
   </section>
 
-  <!-- CONTACTS -->
+
   <section class="contact-section" id="contact">
     <div class="contact-grid">
       <div class="contact-img">
@@ -534,21 +534,21 @@
 </div>
 
 <script>
-  // Same-page smooth scroll (prevents new-tab opening)
-  function scrollToSection(e, id) {
+
+function scrollToSection(e, id) {
     e.preventDefault();
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   }
 
-  // Navigation morphing logic
+
   const worksSection = document.getElementById('my-portfolio');
   const navLeft = document.getElementById('navLeftLinks');
   const navRight = document.getElementById('navRightLinks');
 
   function updateNav() {
     const rect = worksSection.getBoundingClientRect();
-    // If works section top is above the middle of the viewport
+
     if (rect.top <= window.innerHeight / 2) {
       navLeft.innerHTML = `
         <a href="#about" onclick="scrollToSection(event,'about')">ABOUT</a>
@@ -573,10 +573,11 @@
   window.addEventListener('scroll', updateNav);
   window.addEventListener('resize', updateNav);
   window.addEventListener('load', updateNav);
-  updateNav(); // Init
-  requestAnimationFrame(updateNav); // after first paint
+  updateNav(); 
+  requestAnimationFrame(updateNav); 
+  
 
-  // Scroll reveal: fade sections up as they enter the viewport
+
   const revealTargets = document.querySelectorAll(
     '.about-container, .cluster, .works-intro, .work-section, .contact-grid, .model-proof-row, .ill-expl'
   );
@@ -588,7 +589,7 @@
   }, { threshold: 0.12 });
   revealTargets.forEach(el => io.observe(el));
 
-  // Lightbox: click any work box to expand it
+
   const lightbox = document.getElementById('lightbox');
   const lightboxContent = document.getElementById('lightboxContent');
   document.querySelectorAll('.box, .g-box, .anim-box, .model-proof, .about-img, .contact-img').forEach(el => {
