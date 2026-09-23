@@ -182,7 +182,8 @@
   .ill-header-1 h2 { font-size: 64px; letter-spacing: 4px; line-height: 1; }
   .ill-header-1 .sub { font-size: 20px; font-family: 'Inter'; letter-spacing: 2px; }
   .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .box { aspect-ratio: 3/4; border: 1px solid var(--border); background: #121419; position: relative; cursor: pointer; }
+  .box { aspect-ratio: 3/4; border: 1px solid var(--border); background: #121419; position: relative; cursor: pointer; overflow: hidden; }
+  .box img { width: 100%; height: 100%; object-fit: cover; display: block; }
   
   /* ILLUSTRATIONS 2 */
   .ill-header-2 { display: flex; flex-direction: column; align-items: flex-start; width: fit-content; margin: 40px auto 0; }
@@ -193,21 +194,18 @@
   .graphic-layout { display: grid; grid-template-columns: auto 1fr; gap: 70px; align-items: start; }
   .v-text { font-family: 'Space Grotesk'; font-size: clamp(44px, 6vw, 80px); font-weight: 700; text-align: center; line-height: 1.05; letter-spacing: 8px; }
   .g-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(170px, auto); gap: 26px; }
-  .g-box { height: 200px; position: relative; border: 1px solid var(--border); background: #121419; }
+  .g-box { height: 200px; position: relative; border: 1px solid var(--border); background: #121419; overflow: hidden; }
+  .g-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .g-cap { position: absolute; bottom: 12px; left: 12px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; color: var(--muted); }
-  /* randomized positions inside the 3-column grid */
+  /* scattered positions inside the 3-column grid (7 items) */
   .g-item-1 { grid-area: 1 / 1; }
-  .g-item-2 { grid-area: 1 / 2; margin-top: 50px; }
+  .g-item-2 { grid-area: 1 / 2; margin-top: 45px; }
   .g-item-3 { grid-area: 1 / 3; margin-top: -15px; }
-  .g-item-4 { grid-area: 2 / 1; margin-top: 25px; }
+  .g-item-4 { grid-area: 2 / 1; margin-top: 20px; }
   .g-item-5 { grid-area: 2 / 2; }
-  .g-item-6 { grid-area: 2 / 3; margin-top: -30px; }
-  .g-item-7 { grid-area: 3 / 1; }
-  .g-item-8 { grid-area: 3 / 2; margin-top: 45px; }
-  .g-item-9 { grid-area: 3 / 3; margin-top: 15px; }
-  .g-item-10 { grid-area: 4 / 1; margin-top: -20px; }
-  .g-item-11 { grid-area: 4 / 3; margin-top: 30px; }
-  .graphic-expl { max-width: 680px; margin: 90px auto 0; text-align: center; }
+  .g-item-6 { grid-area: 2 / 3; margin-top: -25px; }
+  .g-item-7 { grid-area: 3 / 2; margin-top: 15px; }
+  .graphic-expl { max-width: 680px; margin: 40px auto 0; text-align: center; }
   .graphic-expl h3 { font-size: 15px; font-family: 'JetBrains Mono', monospace; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 22px; color: var(--text); }
   .graphic-expl p { color: var(--muted); font-size: 15px; line-height: 1.9; }
   .expl-text { padding: 20px; color: var(--muted); font-size: 14px; }
@@ -215,7 +213,8 @@
   /* ANIMATION */
   .anim-title-center { text-align: center; font-size: 48px; letter-spacing: 4px; margin-bottom: 50px; }
   .anim-stack { display: flex; flex-direction: column; gap: 8px; max-width: 720px; margin: 0 auto; width: 100%; }
-  .anim-box { aspect-ratio: 16/9; border: 1px solid var(--border); background: #121419; }
+  .anim-box { aspect-ratio: 16/9; border: 1px solid var(--border); background: #121419; overflow: hidden; }
+  .anim-box iframe { width: 100%; height: 100%; border: 0; display: block; }
 
   /* 3D MODELING */
   .model-title-center { text-align: center; font-size: 48px; letter-spacing: 4px; margin: 45px 0 45px; }
@@ -300,6 +299,7 @@
     overflow: hidden;
   }
   .lightbox-content .box-title, .lightbox-content .g-cap { font-size: 16px; }
+  .lightbox-content img { object-fit: contain !important; background: #0b0c0f; }
   /* cloned box must not react to hover inside the lightbox */
   .lightbox-content .box, .lightbox-content .g-box,
   .lightbox-content .anim-box, .lightbox-content .model-proof,
@@ -321,6 +321,7 @@
   .box-title { position: absolute; bottom: 15px; left: 15px; font-family: 'Space Grotesk'; font-size: 14px; font-weight: 600; text-transform: uppercase; }
 
 </style>
+<base target="_blank">
 <base target="_blank">
 <base target="_blank">
 </head>
@@ -415,18 +416,18 @@
       <div class="sub">PORTRAITS</div>
     </div>
     <div class="grid-3">
-      <div class="box"><div class="box-title">Title Here</div></div>
-      <div class="box"><div class="box-title">Title Here</div></div>
-      <div class="box"><div class="box-title">Title Here</div></div>
+      <div class="box"><img src="https://lh3.googleusercontent.com/d/10SONetbJEq19MVp2y9vr1LxmPFWfywxn=w1200" alt="Portrait 1"><div class="box-title">Title Here</div></div>
+      <div class="box"><img src="https://lh3.googleusercontent.com/d/1WZFl4l6Sx6jRkCWN5OFwwBeUVVkWphca=w1200" alt="Portrait 2"><div class="box-title">Title Here</div></div>
+      <div class="box"><img src="https://lh3.googleusercontent.com/d/16ro6_h8xWEVng5LK2uMli1wlAGcFgw8T=w1200" alt="Portrait 3"><div class="box-title">Title Here</div></div>
     </div>
   </section>
 
   <!-- ILLUSTRATIONS 2 -->
   <section class="work-section" style="border-top: none; padding-top: 30px;">
     <div class="grid-3">
-      <div class="box"><div class="box-title">Title Here</div></div>
-      <div class="box"><div class="box-title">Title Here</div></div>
-      <div class="box"><div class="box-title">Title Here</div></div>
+      <div class="box"><img src="https://lh3.googleusercontent.com/d/1N1E5sDZQzrK_mHL6aO3sX39bn3doSuDu=w1200" alt="Passion piece 1"><div class="box-title">Title Here</div></div>
+      <div class="box"><img src="https://lh3.googleusercontent.com/d/1qoFSIL2QUNT0nqJpE9G8eUPM8-HkrVk8=w1200" alt="Passion piece 2"><div class="box-title">Title Here</div></div>
+      <div class="box"><img src="https://lh3.googleusercontent.com/d/1RGIq1kezJ0c7TechKlBxz25b6oe6TKTb=w1200" alt="Passion piece 3"><div class="box-title">Title Here</div></div>
     </div>
     <div class="ill-header-2">
       <div class="sub">PASSION</div>
@@ -441,17 +442,13 @@
         G<br>R<br>A<br>P<br>H<br>I<br>C<br><br>D<br>E<br>S<br>I<br>G<br>N
       </div>
       <div class="g-grid">
-        <div class="g-box g-item-1"><div class="g-cap">PLACEHOLDER / 01</div></div>
-        <div class="g-box g-item-2"><div class="g-cap">PLACEHOLDER / 02</div></div>
-        <div class="g-box g-item-3"><div class="g-cap">PLACEHOLDER / 03</div></div>
-        <div class="g-box g-item-4"><div class="g-cap">PLACEHOLDER / 04</div></div>
-        <div class="g-box g-item-5"><div class="g-cap">PLACEHOLDER / 05</div></div>
-        <div class="g-box g-item-6"><div class="g-cap">PLACEHOLDER / 06</div></div>
-        <div class="g-box g-item-7"><div class="g-cap">PLACEHOLDER / 07</div></div>
-        <div class="g-box g-item-8"><div class="g-cap">PLACEHOLDER / 08</div></div>
-        <div class="g-box g-item-9"><div class="g-cap">PLACEHOLDER / 09</div></div>
-        <div class="g-box g-item-10"><div class="g-cap">PLACEHOLDER / 10</div></div>
-        <div class="g-box g-item-11"><div class="g-cap">PLACEHOLDER / 11</div></div>
+        <div class="g-box g-item-1"><img src="https://lh3.googleusercontent.com/d/1DnCwYS6e8HxP7EuE-tARSLCD7ZRLNmuv=w1200" alt="Graphic design work 1"><div class="g-cap">PLACEHOLDER / 01</div></div>
+      <div class="g-box g-item-2"><img src="https://lh3.googleusercontent.com/d/1NZHanMGsQPqxIAzrs1XKCi95KbgiNfGs=w1200" alt="Graphic design work 2"><div class="g-cap">PLACEHOLDER / 02</div></div>
+      <div class="g-box g-item-3"><img src="https://lh3.googleusercontent.com/d/1C_6jzy_12CEY99o_catWne8FoABxvyMq=w1200" alt="Graphic design work 3"><div class="g-cap">PLACEHOLDER / 03</div></div>
+      <div class="g-box g-item-4"><img src="https://lh3.googleusercontent.com/d/1CLK3RS0N4Ko2FcEUYxdyXqCWUdUtbZ5b=w1200" alt="Graphic design work 4"><div class="g-cap">PLACEHOLDER / 04</div></div>
+      <div class="g-box g-item-5"><img src="https://lh3.googleusercontent.com/d/1LvllpP1hHrqMsyqoDNhcdSZeAYdVwDqx=w1200" alt="Graphic design work 5"><div class="g-cap">PLACEHOLDER / 05</div></div>
+      <div class="g-box g-item-6"><img src="https://lh3.googleusercontent.com/d/17ZeK_7_Pzbd38cDMx2w1blpyjrYWg9ly=w1200" alt="Graphic design work 6"><div class="g-cap">PLACEHOLDER / 06</div></div>
+      <div class="g-box g-item-7"><img src="https://lh3.googleusercontent.com/d/1AVIK_Du9JnpdTLTJXEWqSHL1D0mEhcZp=w1200" alt="Graphic design work 7"><div class="g-cap">PLACEHOLDER / 07</div></div>
       </div>
     </div>
     <div class="graphic-expl">
@@ -466,9 +463,9 @@
   <section class="work-section" id="animation">
     <h2 class="anim-title-center">2D ANIMATION</h2>
     <div class="anim-stack">
-      <div class="anim-box"></div>
-      <div class="anim-box"></div>
-      <div class="anim-box"></div>
+      <div class="anim-box"><iframe src="https://www.youtube.com/embed/mr57tWvIV_o" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+      <div class="anim-box"><iframe src="https://www.youtube.com/embed/3yIDYCmxMy0" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+      <div class="anim-box"><iframe src="https://www.youtube.com/embed/0m7WT6GGywk" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
     </div>
   </section>
 
