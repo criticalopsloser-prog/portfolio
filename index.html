@@ -215,11 +215,13 @@
   .anim-stack { display: flex; flex-direction: column; gap: 8px; max-width: 720px; margin: 0 auto; width: 100%; }
   .anim-box { aspect-ratio: 16/9; border: 1px solid var(--border); background: #121419; overflow: hidden; }
   .anim-box iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .anim-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
   /* 3D MODELING */
   .model-title-center { text-align: center; font-size: 48px; letter-spacing: 4px; margin: 45px 0 45px; }
   .model-proof-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; width: 100%; max-width: 900px; margin: 0 auto; }
-  .model-proof { aspect-ratio: 1; border: 1px solid var(--border); background: #121419; }
+  .model-proof { aspect-ratio: 1; border: 1px solid var(--border); background: #121419; overflow: hidden; }
+  .model-proof img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .model-layout { display: flex; flex-direction: column; align-items: center; gap: 40px; }
   .model-title-row { display: flex; align-items: center; justify-content: center; gap: 40px; width: 100%; max-width: 800px; }
   .model-title-row h2 { font-size: 48px; }
@@ -441,6 +443,7 @@
       <div class="v-text">
         G<br>R<br>A<br>P<br>H<br>I<br>C<br><br>D<br>E<br>S<br>I<br>G<br>N
       </div>
+      <div class="graphic-right">
       <div class="g-grid">
         <div class="g-box g-item-1"><img src="https://lh3.googleusercontent.com/d/1DnCwYS6e8HxP7EuE-tARSLCD7ZRLNmuv=w1200" alt="Graphic design work 1"><div class="g-cap">PLACEHOLDER / 01</div></div>
       <div class="g-box g-item-2"><img src="https://lh3.googleusercontent.com/d/1NZHanMGsQPqxIAzrs1XKCi95KbgiNfGs=w1200" alt="Graphic design work 2"><div class="g-cap">PLACEHOLDER / 02</div></div>
@@ -450,13 +453,13 @@
       <div class="g-box g-item-6"><img src="https://lh3.googleusercontent.com/d/17ZeK_7_Pzbd38cDMx2w1blpyjrYWg9ly=w1200" alt="Graphic design work 6"><div class="g-cap">PLACEHOLDER / 06</div></div>
       <div class="g-box g-item-7"><img src="https://lh3.googleusercontent.com/d/1AVIK_Du9JnpdTLTJXEWqSHL1D0mEhcZp=w1200" alt="Graphic design work 7"><div class="g-cap">PLACEHOLDER / 07</div></div>
       </div>
-    </div>
     <div class="graphic-expl">
       <h3>The drive</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
     </div>
+    </div><!-- /graphic-right -->
   </section>
 
   <!-- ANIMATION 2D -->
@@ -472,19 +475,19 @@
   <!-- 3D MODELING -->
   <section class="work-section" id="modeling" style="border-top: none; padding-top: 40px;">
     <div class="anim-stack">
-      <div class="anim-box"></div>
-      <div class="anim-box"></div>
+      <div class="anim-box"><img src="https://lh3.googleusercontent.com/d/1jbKUdfprC7zC6u2VuQwSaUy46jBdqoar=w1600" alt="3D modeling render 1"></div>
+      <div class="anim-box"><img src="https://lh3.googleusercontent.com/d/1JeR1wBDRK-aIyI0VuPAxfPScQnBo7MrL=w1600" alt="3D modeling render 2"></div>
     </div>
     <h2 class="model-title-center">3D MODELING</h2>
     <div class="model-proof-row">
-      <div class="model-proof"></div>
-      <div class="model-proof"></div>
-      <div class="model-proof"></div>
-      <div class="model-proof"></div>
-      <div class="model-proof"></div>
-      <div class="model-proof"></div>
-      <div class="model-proof"></div>
-      <div class="model-proof"></div>
+      <div class="model-proof"><img src="https://lh3.googleusercontent.com/d/1KAjvLthmrvXsvZ86HsTYyY6MigYsGiFZ=w800" alt="3D proof 1"></div>
+      <div class="model-proof"><img src="https://lh3.googleusercontent.com/d/12Kv-W1ZfZNpoLxzZ8tOlsg7_ujmRQFnP=w800" alt="3D proof 2"></div>
+      <div class="model-proof"><img src="https://lh3.googleusercontent.com/d/1vErVA3CbH73kgxHB63JSuaq0ceylguBv=w800" alt="3D proof 3"></div>
+      <div class="model-proof"><img src="https://lh3.googleusercontent.com/d/1oz4xsPiyY6zkmWA3kZ0wMT-onREWL38N=w800" alt="3D proof 4"></div>
+      <div class="model-proof"><img src="https://lh3.googleusercontent.com/d/1tlztlrmExos0A5C5XFfw_7OfJdxlbXKw=w800" alt="3D proof 5"></div>
+      <div class="model-proof"><img src="https://lh3.googleusercontent.com/d/1jB_lGHNiuL6_Wx_MNvbpjey84k5ol508=w800" alt="3D proof 6"></div>
+      <div class="model-proof"><img src="https://lh3.googleusercontent.com/d/1-uN9UJtFlfzTkxY2XVaKtf4pk69CtfnW=w800" alt="3D proof 7"></div>
+      <div class="model-proof"><img src="https://lh3.googleusercontent.com/d/1qtq2xotqWyHmijHeykmwhoGowM5rVr1m=w800" alt="3D proof 8"></div>
     </div>
   </section>
 
@@ -492,8 +495,7 @@
   <section class="contact-section" id="contact">
     <div class="contact-grid">
       <div class="contact-img">
-        <!-- PUT YOUR CONTACT PICTURE URL BELOW (same img format as the about pic) -->
-        MY PICTURE
+        <img src="https://lh3.googleusercontent.com/d/1YQ5fHOSW7XiVQuQQXKunRmC0clhn7HWt=w1000" alt="John Neo Tapon">
       </div>
       <div class="contact-links">
         <div class="contact-sub">Ideas made real.</div>
